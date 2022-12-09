@@ -1,4 +1,4 @@
-import { Box, Checkbox, CheckboxProps, UseCheckboxProps } from "@chakra-ui/react"
+import { Box, Checkbox, CheckboxProps, Stack } from "@chakra-ui/react"
 import { FC, useMemo, useSyncExternalStore } from "react"
 
 
@@ -56,9 +56,6 @@ const useCheckbox = (keys: string[]) => {
   return { value, setValue }
 }
 
-
-
-
 const CheckboxItem: FC<{ checkboxKey: string[], label: string }> = ({ checkboxKey, label }) => {
   const { value, setValue } = useCheckbox(checkboxKey)
   const checkValue: Partial<CheckboxProps> = useMemo(() => {
@@ -81,10 +78,12 @@ const CheckboxItem: FC<{ checkboxKey: string[], label: string }> = ({ checkboxKe
 }
 
 export const CheckboxSample = () => {
-  return <>
+  return <Stack p={2}>
     <CheckboxItem checkboxKey={items} label={"all"} />
-    {items.map((idx) => {
-      return <CheckboxItem key={idx} checkboxKey={[idx]} label={idx} />
-    })}
-  </>
+    <Stack p={2}>
+      {items.map((idx) => {
+        return <CheckboxItem key={idx} checkboxKey={[idx]} label={idx} />
+      })}
+    </Stack>
+  </Stack>
 }
