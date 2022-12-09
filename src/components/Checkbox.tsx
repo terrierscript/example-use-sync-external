@@ -1,7 +1,6 @@
 import { Box, Checkbox, CheckboxProps, Stack } from "@chakra-ui/react"
 import { FC, useMemo, useSyncExternalStore } from "react"
 
-
 const createStores = (keys: string[]) => {
   let externalStore: Record<string, boolean> = Object.fromEntries(keys.map(key => [key, false]))
   const externalStoreTarget: Record<string, EventTarget> = Object.fromEntries(keys.map(key => [key, new EventTarget]))
@@ -32,12 +31,8 @@ const createStores = (keys: string[]) => {
       getSnapshot: () => {
         const checks = keys.map(key => externalStore[key])
         console.log(keys, checks)
-        if (checks.every(item => item)) {
-          return 2
-        }
-        if (checks.every(item => !item)) {
-          return 0
-        }
+        if (checks.every(item => item)) return 2
+        if (checks.every(item => !item)) return 0
         return 1
       },
     }
