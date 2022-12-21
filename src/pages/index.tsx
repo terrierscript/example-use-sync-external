@@ -3,6 +3,7 @@ import Head from 'next/head'
 import dynamic from 'next/dynamic'
 import React from 'react'
 import { CheckboxSample } from '../components/Checkbox'
+import { CheckboxSample2 } from '../components/Checkbox2'
 // const CheckboxSampleDynamic = dynamic(() => import('../components/Checkbox')
 // .then(({ CheckboxSample }) => CheckboxSample))
 export default function Home() {
@@ -12,7 +13,7 @@ export default function Home() {
         <title></title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <CheckboxSample />
+      <CheckboxSample2 />
     </Box>
   )
 }
